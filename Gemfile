@@ -46,6 +46,9 @@ gem 'annotate'
 # rails g bootstrap:layout application fluid
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
+
+# rails g cancan:ability
+gem 'cancancan'
 # <== add
 
 
