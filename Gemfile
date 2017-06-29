@@ -52,6 +52,8 @@ gem 'cancancan'
 
 # rails g devise:views:bootstrap_templates
 gem 'devise-bootstrap-views'
+
+gem 'bootstrap_form', '~> 2.3'
 # <== add
 
 

@@ -1,0 +1,33 @@
+<h1>Labware List</h1>
+
+<%= link_to "Add", new_labware_path, :class => "btn btn-primary" %><br>
+
+<hr>
+
+<% if @labwares.any? %>
+<table class="table table-bordered table-hover">
+  <thead>
+     <tr class="info"><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>code</th><th>Operation</th></tr>
+  </thead>
+  <tbody>
+    <% @labwares.each do |l| %>
+    <tr>
+    <td><%= l.id %></td>
+    <td><%= l.name %></td>
+    <td><%= l.description %></td>
+    <td><%= l.quantity %></td>
+    <td><%= l.code %></td>
+    <td width="230" align="center">
+      <div class="btn-group">
+        <%= link_to 'Show', labware_path(l.id), class: "btn btn-info" %>
+        <%= link_to 'Edit', edit_labware_path(l.id), class: "btn btn-success" %>
+        <%= link_to 'Destroy', labware_path(l.id), method: :delete, data: { confirm: "Are you sure to delete？" }, :class => "btn btn-danger" %>
+      </div>
+    </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <h4>No data yet.</h4>
+<% end %>

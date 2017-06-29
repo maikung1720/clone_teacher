@@ -17,12 +17,23 @@
 #                          PATCH  /users(.:format)               devise/registrations#update
 #                          PUT    /users(.:format)               devise/registrations#update
 #                          DELETE /users(.:format)               devise/registrations#destroy
+#                 labwares GET    /labwares(.:format)            labwares#index
+#                          POST   /labwares(.:format)            labwares#create
+#              new_labware GET    /labwares/new(.:format)        labwares#new
+#             edit_labware GET    /labwares/:id/edit(.:format)   labwares#edit
+#                  labware GET    /labwares/:id(.:format)        labwares#show
+#                          PATCH  /labwares/:id(.:format)        labwares#update
+#                          PUT    /labwares/:id(.:format)        labwares#update
+#                          DELETE /labwares/:id(.:format)        labwares#destroy
 # 
 
 Rails.application.routes.draw do
+
   root "menu#index"
   
   devise_for :users
+  
+  resources :labwares
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
