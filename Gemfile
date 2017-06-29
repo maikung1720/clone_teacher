@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,8 +33,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 # add ==> 
+# rails g devise:install
+# rails g devise:views
+# rails g devise User
+# rake db:migrate
 gem 'devise'
+
+# annotate -r
 gem 'annotate'
+
+# rails g bootstrap:install
+# rails g bootstrap:layout application fluid
+gem 'twitter-bootstrap-rails'
+gem 'less-rails'
 # <== add
 
 
