@@ -49,6 +49,9 @@ gem 'less-rails'
 
 # rails g cancan:ability
 gem 'cancancan'
+
+# rails g devise:views:bootstrap_templates
+gem 'devise-bootstrap-views'
 # <== add
 
 
