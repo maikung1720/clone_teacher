@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  role                   :string
 #  name                   :string
+#  image                  :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

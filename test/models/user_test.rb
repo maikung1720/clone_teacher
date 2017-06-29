@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  role                   :string
 #  name                   :string
+#  image                  :text
 #
 
 require 'test_helper'
