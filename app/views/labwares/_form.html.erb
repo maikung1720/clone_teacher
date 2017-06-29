@@ -1,4 +1,5 @@
 <%= bootstrap_form_for(@labware) do |f| %>
+  <%= f.file_field :image, class: 'filestyle', "data-buttonText": "Choose file", "data-buttonBefore": "true", "data-placeholder": "No file" %>
   <%= f.text_field :name %>
   <%= f.text_area :description %>
   <%= f.number_field :quantity %>
