@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: rentals
+#
+#  id          :integer          not null, primary key
+#  rental_date :datetime
+#  due_date    :datetime
+#  User_id     :integer
+#  status      :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rental_date: 2017-07-05 12:15:50
+  due_date: 2017-07-05 12:15:50
+  User_id: 
+  status: MyString
+
+two:
+  rental_date: 2017-07-05 12:15:50
+  due_date: 2017-07-05 12:15:50
+  User_id: 
+  status: MyString

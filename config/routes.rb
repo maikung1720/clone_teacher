@@ -25,6 +25,14 @@
 #                          PATCH  /labwares/:id(.:format)        labwares#update
 #                          PUT    /labwares/:id(.:format)        labwares#update
 #                          DELETE /labwares/:id(.:format)        labwares#destroy
+#                  rentals GET    /rentals(.:format)             rentals#index
+#                          POST   /rentals(.:format)             rentals#create
+#               new_rental GET    /rentals/new(.:format)         rentals#new
+#              edit_rental GET    /rentals/:id/edit(.:format)    rentals#edit
+#                   rental GET    /rentals/:id(.:format)         rentals#show
+#                          PATCH  /rentals/:id(.:format)         rentals#update
+#                          PUT    /rentals/:id(.:format)         rentals#update
+#                          DELETE /rentals/:id(.:format)         rentals#destroy
 # 
 
 Rails.application.routes.draw do
@@ -34,6 +42,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :labwares
+  resources :rentals
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

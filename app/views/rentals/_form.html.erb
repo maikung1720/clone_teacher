@@ -1,0 +1,5 @@
+<%= bootstrap_form_for(@rental) do |f| %>
+  <%= f.date_select :rental_date %>
+  <%= f.date_select :due_date %>
+  <%= f.primary "OK" %>
+<% end %>

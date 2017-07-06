@@ -9,9 +9,13 @@ class Ability
     elsif user.teacher?
       can :update, User
       can :manage, Labware
+      can [:update, :read], Rental
+      can :change_status, Rental
     else 
       can :update, User
       can :read, Labware
+      can [:update, :destroy], Rental, User_id: user.id
+      can [:create, :read], Rental
     end
   end
     # Define abilities for the passed in user here. For example:

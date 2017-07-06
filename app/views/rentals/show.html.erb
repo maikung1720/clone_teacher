@@ -1,0 +1,21 @@
+<h1>Rental Details</h1>
+
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+    <td width="100", class="info">Name</td> <td><%= @rental.User.name %></td>
+    </tr>
+    <tr>
+    <td width="100", class="info">Description</td> <td><%= @rental.rental_date %></td>
+    </tr>
+    <tr>
+    <td width="100", class="info">Quantity</td> <td><%= @rental.due_date %></td>
+    </tr>
+    <tr>
+    <td width="100", class="info">Status</td> 
+    <td>
+      <%= render 'status_view', data: @rental.status %>
+    </td>
+    </tr>
+  </tbody>
+</table>

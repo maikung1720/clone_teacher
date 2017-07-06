@@ -31,7 +31,7 @@
       </div>
       <div class="form-group">
         <%= f.label :role %>
-        <%= f.select :role, {"teacher" => "teacher", "student" => "student", "Administrator" => "admin"}, class: "form-control" %>
+        <%= f.select :role, {"Teacher" => "teacher", "Student" => "student", "Administrator" => "admin"}, class: "form-control" %>
       </div>
       <%= f.submit t('.update', default: 'Update'), class: 'btn btn-primary' %>
     <% end %>
