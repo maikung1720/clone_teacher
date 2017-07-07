@@ -1,22 +1,6 @@
 <h1>Rental</h1>
-<% if can? :change_status, Rental %>
-  <%= bootstrap_form_for(@rental) do |f| %>
-  <%= f.date_select :rental_date, :disabled => true %>
-  <%= f.date_select :due_date, :disabled => true %>
-  <% if @rental.status == "application" || @rental.status == "approval" || @rental.status == "reject"  %>
-  <%= f.select :status, {"Application" => "application", "Approval" => "approval", "Reject" => "reject"}, {}, {class: "form-control"} %>
-  <% else %>
-  <%= f.select :status, {}, {}, {disabled: true, class: "form-control"} %>
-  <% end %>
-  <%= f.primary "OK" %>
-  <% end %>
-<% else %>
-  <%= bootstrap_form_for(@rental) do |f| %>
-  <%= f.date_select :rental_date %>
-  <%= f.date_select :due_date %>
-  <%= f.primary "OK" %>
-  <% end %>
-<% end %>
+
+<%= render 'edit_form', path: rental_path(@rental), method: :put %>
 
 <%= link_to 'Show', @rental %> |
-<%= link_to 'Back', rentals_path %>v
+<%= link_to 'Back', rentals_path %>

@@ -61,6 +61,8 @@ gem 'bootstrap_form', '~> 2.3'
 # rails g uploader image
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
+
+gem 'cocoon'
 # <== add
 
 

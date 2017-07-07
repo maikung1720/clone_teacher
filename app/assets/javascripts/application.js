@@ -17,3 +17,4 @@
 //= require_tree .
 //= bootstrap-filestyle.js
 //= bootstrap-filestyle.min.js
+//= require cocoon

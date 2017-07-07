@@ -12,6 +12,27 @@
     <td width="100", class="info">Quantity</td> <td><%= @rental.due_date %></td>
     </tr>
     <tr>
+      <td width="100", class="info">Labwares</td>
+      <td>
+        <table>
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @rental.rental_details.each do |i| %>
+            <tr>
+              <td><%= i.labware.name %></td>
+              <td><%= i.quantity %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
     <td width="100", class="info">Status</td> 
     <td>
       <%= render 'status_view', data: @rental.status %>

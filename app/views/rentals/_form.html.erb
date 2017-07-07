@@ -1,5 +1,29 @@
 <%= bootstrap_form_for(@rental) do |f| %>
   <%= f.date_select :rental_date %>
   <%= f.date_select :due_date %>
+  <b>Labware details</b>
+  <%= link_to_add_association 'Add Labware', f, :rental_details,
+        class: 'btn btn-default',
+        data: {
+          association_insertion_node: '#detail-association-insertion-point',
+          association_insertion_method: 'append' }%>
+  <table class="table table-list">
+    <thead>
+      <tr>
+        <th>Labware</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody id='detail-association-insertion-point'>
+    <div class="form-group">
+    <%= f.fields_for :rental_details do |od| %>
+      <%= render 'rental_detail_fields', f: od %>
+    <% end %>
+    </div>
+    </tbody>
+    </table>
+
   <%= f.primary "OK" %>
 <% end %>

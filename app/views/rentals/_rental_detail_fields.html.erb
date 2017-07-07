@@ -1,0 +1,12 @@
+<tr class="nested-fields">
+  <%= f.hidden_field :id %>
+  <td>
+  <%= f.collection_select :labware_id, Labware.all, :id, :name,{ hide_label: true },:disabled => @can_update %>
+  </td>
+  <td>
+  <%= f.number_field :quantity, class: 'form-control quantity', hide_label: true , :disabled => @can_update %>
+  </td>
+  <td>
+  <%= link_to_remove_association '削除', f, class: 'btn btn-default' %>
+  </td>
+</tr>
