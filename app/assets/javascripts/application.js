@@ -18,3 +18,15 @@
 //= bootstrap-filestyle.js
 //= bootstrap-filestyle.min.js
 //= require cocoon
+function entryChange1(){
+    var radio = document.getElementsByName('role') 
+    console.log(radio);
+    if(radio[0].checked) {
+        document.getElementById('hoge1_form').style.display = "";
+        document.getElementById('hoge2_form').style.display = "none";
+    }else if(radio[1].checked) {
+        document.getElementById('hoge1_form').style.display = "none";
+        document.getElementById('hoge2_form').style.display = "";
+        
+    }
+}
