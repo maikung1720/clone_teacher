@@ -18,6 +18,7 @@
 #  role                   :string
 #  name                   :string
 #  image                  :text
+#  card_no                :string
 #
 
 class User < ActiveRecord::Base

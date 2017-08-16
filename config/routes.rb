@@ -33,6 +33,7 @@
 #                          PATCH  /rentals/:id(.:format)         rentals#update
 #                          PUT    /rentals/:id(.:format)         rentals#update
 #                          DELETE /rentals/:id(.:format)         rentals#destroy
+#           api_box_opener GET    /api/box_opener(.:format)      api/box_opener#index {:format=>/json/}
 # 
 
 Rails.application.routes.draw do
@@ -43,6 +44,12 @@ Rails.application.routes.draw do
   
   resources :labwares
   resources :rentals
+  
+  namespace :api, {format: 'json'} do
+    namespace :box_opener do
+        get "/" , :action => "index"
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

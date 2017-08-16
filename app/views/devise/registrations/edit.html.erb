@@ -32,6 +32,10 @@
       <div class="form-group">
         <%= f.label :role %>
         <%= f.select :role, {"Teacher" => "teacher", "Student" => "student", "Administrator" => "admin"}, class: "form-control" %>
+        <div class="form-group">
+        <%= f.label :card_no %>
+        <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>
+      </div>
       </div>
       <%= f.submit t('.update', default: 'Update'), class: 'btn btn-primary' %>
     <% end %>

@@ -18,6 +18,7 @@
 #  role                   :string
 #  name                   :string
 #  image                  :text
+#  card_no                :string
 #
 
 require 'test_helper'

@@ -25,6 +25,10 @@
         <%= f.label :role %>
         <%= f.select :role, {"teacher" => "teacher", "student" => "student", "Administrator" => "admin"}, class: "form-control" %>
       </div>
+      <div class="form-group">
+        <%= f.label :card_no %>
+        <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>
+      </div>
       <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
     <% end %>
   </div>
