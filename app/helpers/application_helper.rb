@@ -17,4 +17,29 @@ module ApplicationHelper
 
     html.html_safe
   end
+  def sidebar_activate(sidebar_link_url)
+    current_url = request.headers['PATH_INFO']
+    if current_url.match(sidebar_link_url)
+      ' class="active"'
+    else
+      ''
+    end
+  end
+
+  def sidebar_list_items
+    items = [
+      {:text => 'Labwares',      :path => labwares_path},
+      {:text => 'Rentals',   :path => rentals_path}
+    ]
+
+    html = ''
+    items.each do |item|
+      text = item[:text]
+      path = item[:path]
+      html = html + %Q(<li#{sidebar_activate(path)}><a href="#{path}">#{text}</a></li>)
+    end
+
+    raw(html)
+  end
+
 end
