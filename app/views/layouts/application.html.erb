@@ -54,6 +54,7 @@
           </ul>
           <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
+            <li class="rental-box-text"><%= render 'layouts/rental_box_text' %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

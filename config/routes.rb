@@ -1,6 +1,7 @@
 # == Route Map
 #
 #                   Prefix Verb   URI Pattern                    Controller#Action
+#               rental_box GET    /rental_box(.:format)          rental_boxes#show
 #                     root GET    /                              menu#index
 #         new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)       devise/sessions#create
@@ -33,10 +34,16 @@
 #                          PATCH  /rentals/:id(.:format)         rentals#update
 #                          PUT    /rentals/:id(.:format)         rentals#update
 #                          DELETE /rentals/:id(.:format)         rentals#destroy
+#           rental_details POST   /rental_details(.:format)      rental_details#create
+#            rental_detail PATCH  /rental_details/:id(.:format)  rental_details#update
+#                          PUT    /rental_details/:id(.:format)  rental_details#update
+#                          DELETE /rental_details/:id(.:format)  rental_details#destroy
 #           api_box_opener GET    /api/box_opener(.:format)      api/box_opener#index {:format=>/json/}
 # 
 
 Rails.application.routes.draw do
+
+  resource :rental_box, only: [:show]
 
   root "menu#index"
   
@@ -44,12 +51,14 @@ Rails.application.routes.draw do
   
   resources :labwares
   resources :rentals
+  resources :rental_details, only: [:create, :update, :destroy]
   
   namespace :api, {format: 'json'} do
     namespace :box_opener do
         get "/" , :action => "index"
     end
   end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

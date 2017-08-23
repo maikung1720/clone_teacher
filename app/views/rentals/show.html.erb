@@ -2,6 +2,7 @@
 
 <table class="table table-bordered">
   <tbody>
+    <% if !@rental.User.nil? %>
     <tr>
     <td width="100", class="info">Name</td> <td><%= @rental.User.name %></td>
     </tr>
@@ -11,6 +12,7 @@
     <tr>
     <td width="100", class="info">Quantity</td> <td><%= @rental.due_date %></td>
     </tr>
+    <% end %>
     <tr>
       <td width="100", class="info">Labwares</td>
       <td>

@@ -1,9 +1,4 @@
 <h1>Rental list</h1>
-<% if can? :create, Rental %>
-<%= link_to "Add", new_rental_path, :class => "btn btn-primary" %><br>
-<% end %>
-<hr>
-
 <% if @rentals.any? %>
 <table class="table table-bordered table-hover">
   <thead>
@@ -12,18 +7,20 @@
   <tbody>
     <% @rentals.each_with_index do |r, i| %>
     <tr>
-    <td><%= i+1%></td>
+    <td><%= i+1%></t>
+    <% if !r.User.nil? %>
     <td><%= r.User.name %></td>
     <td><%= r.rental_date.to_s(:date_on) %></td>
     <td><%= r.due_date.in_time_zone('Tokyo').to_s(:date_on) %></td>
+    <% end %>
     <td width="100" align="center">
       <%= render 'status_view', data: r.status %>
     </td>
     <td width="230" align="center">
       <div class="btn-group">
         <%= link_to 'Show', rental_path(r.id), class: "btn btn-info" %>
-        <% if can? :update, Rental %>
-        <%= link_to 'Edit', edit_rental_path(r.id), class: "btn btn-success" %>
+        <% if can? :change_status, Rental %>
+        <%= link_to 'Change Status', edit_rental_path(r.id), class: "btn btn-success" %>
         <% end %>
         <% if can? :destroy, Rental %>
         <%= link_to 'Destroy', rental_path(r.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }, :class => "btn btn-danger" %>

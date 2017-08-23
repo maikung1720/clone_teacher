@@ -1,16 +1,17 @@
 class RentalsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
 
   def index
-    @rentals = Rental.all
+    @rentals = Rental.where.not(:status => 'progress')
   end
 
   def show
   end
 
   def new
-    @rental = Rental.new
+    @rental = current_rental
+    @rental_details = @rental.rental_details
   end
 
   def create
@@ -25,25 +26,30 @@ class RentalsController < ApplicationController
   end
 
   def edit
+    if @rental.blank?
+      @rental = current_rental
+    end
     @can_update = islabaware_detail_change(@rental)
-    logger.debug @can_update.to_s + "AAAAAA"
+    @rental_details = @rental.rental_details
+    logger.debug @rental
   end
 
   def update
+    if @rental.User.blank?
+      @rental.User = current_user
+      @rental.status = "application"
+    end
     if @rental.update(rental_params)
       redirect_to rentals_path
+      session[:rental_id] = nil
     else
       render 'edit'
     end
   end
 
   def destroy
-    if @rental.Rental_id.nil?
       @rental.destroy
       redirect_to rentals_path
-    else
-      redirect_to rentals_path, notice: "その本は貸出中のため削除できません。"
-    end
   end
 
 private
@@ -58,11 +64,13 @@ private
     def islabaware_detail_change(rental)
       bret = true
       if rental.User.eql?(current_user)
-        logger.debug rental.status + " AAAAA"
-        if rental.status.eql?('application') then
+        if rental.status.eql?('application')  then
           bret = false
         end
+      elsif rental.User.blank? 
+        bret = false
       end
+      
       return bret
     end
 end

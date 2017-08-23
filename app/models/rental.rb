@@ -13,12 +13,18 @@
 
 class Rental < ActiveRecord::Base
   belongs_to :User
+  before_create :set_rental_status
   
   has_many :rental_details, dependent: :destroy
   has_many :labware, through: :rental_details
   
   accepts_nested_attributes_for :rental_details, allow_destroy: true
   
-  enum status: {application: 'application', approval: 'approval', reject: 'reject', lending: 'lending', returned: 'returned'}
+  enum status: {application: 'application', approval: 'approval', reject: 'reject', lending: 'lending', returned: 'returned', progress: 'progress'}
+  
+private
+  def set_rental_status
+    self.status = "progress"
+  end
 
 end

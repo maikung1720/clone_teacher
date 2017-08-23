@@ -1,0 +1,18 @@
+<div class="col-md-4">
+  <div class="well">
+  <h2><%= link_to labware.name, labware_path(labware.id) %></h2>
+  <% if can? :create, Rental %>
+  <p>
+    <%= form_for rental_detail, remote: true do |f| %>
+    <div class="input-group">
+      <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+      <div class="input-group-btn">
+        <%= f.hidden_field :labware_id, value: labware.id %>
+        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </p>
+  <% end %>
+  </div>
+</div>

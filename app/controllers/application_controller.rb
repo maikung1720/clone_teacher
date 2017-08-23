@@ -8,6 +8,23 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  helper_method :current_rental
+
+  def current_rental
+    if !session[:rental_id].nil?
+      Rental.find(session[:rental_id])
+    else
+      Rental.new
+    end
+  end
+  def current_rental_for_delete
+    if !session[:rental_id].nil?
+      Rental.find(session[:rental_id])
+    else
+      Rental.new
+    end
+  end
+  
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end

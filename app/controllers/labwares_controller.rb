@@ -4,6 +4,7 @@ class LabwaresController < ApplicationController
 
   def index
     @labwares = Labware.all
+    @rental_detail = current_rental.rental_details.new
   end
 
   def show

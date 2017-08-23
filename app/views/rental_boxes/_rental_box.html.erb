@@ -1,0 +1,27 @@
+<% if !@rental_detail.nil? && @rental_detail.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @rental_detail.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @rental_details.size == 0 %>
+  <p class="text-center">
+    There are no labwares. Please <%= link_to "go back", labwares_path %> and select some labwares.
+  </p>
+<% else %>
+  <div class="container">
+  <% @rental_details.each_with_index do |rental_detail, i| %>
+    <% if i % 3 == 0 %>
+      <div class="row">
+    <% end %>
+    <%= render 'rental_boxes/rental_box_row', labware: rental_detail.labware, rental_detail: rental_detail %>
+    <% if (i + 1) % 3 == 0 %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+  <%= link_to 'Commmit', edit_rental_path(current_rental.id), class: "btn btn-success" %>
+<% end %>

@@ -1,0 +1,2 @@
+module RentalDetailsHelper
+end
