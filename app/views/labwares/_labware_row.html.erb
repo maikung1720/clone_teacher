@@ -13,6 +13,8 @@
     </div>
     <% end %>
   </p>
+  <% elsif can? :upgrate , Labware%>
+    <%= link_to 'Edit', edit_labware_path(labware.id), class: "btn btn-success" %>
   <% end %>
   </div>
 </div>

@@ -3,7 +3,12 @@ class LabwaresController < ApplicationController
   before_action :set_labware, only: [:show, :edit, :update, :destroy]
 
   def index
-    @labwares = Labware.all
+    if params[:labware_group].blank?
+      @labware_group = "physics"
+    else 
+      @labware_group = params[:labware_group]
+    end
+    @labwares = Labware.where(:code => @labware_group)
     @rental_detail = current_rental.rental_details.new
   end
 
@@ -17,7 +22,8 @@ class LabwaresController < ApplicationController
   def create
     @labware = Labware.new(labware_params)
     if @labware.save
-      redirect_to labwares_path
+      logger.debug @labware.code.to_s + "  CCCC"
+      redirect_to labwares_path(labware_group: @labware.code.to_s.downcase)
     else
       render 'new'
     end

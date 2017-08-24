@@ -17,6 +17,8 @@ class Labware < ActiveRecord::Base
     
     mount_uploader :image, ImageUploader
     
+    enum code: {Physics: 'physics', Biology: 'biology', Chemistry: 'chemistry'}
+    
   # ------------------------------------------------------------------
   # Validations
   # ------------------------------------------------------------------

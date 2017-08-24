@@ -28,7 +28,6 @@ module ApplicationHelper
 
   def sidebar_list_items
     items = [
-      {:text => 'Labwares',      :path => labwares_path},
       {:text => 'Rentals',   :path => rentals_path}
     ]
 

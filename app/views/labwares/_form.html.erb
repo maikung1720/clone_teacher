@@ -2,7 +2,7 @@
   <%= f.file_field :image, class: 'filestyle', "data-buttonText": "Choose file", "data-buttonBefore": "true", "data-placeholder": "No file" %>
   <%= f.text_field :name %>
   <%= f.text_area :description %>
-  <%= f.number_field :quantity %>
-  <%= f.text_field :code %>
+  <%= f.number_field :quantity, value: @labware.quantity.to_i, class: "form-control", min: 1 %>
+  <%= f.select :code, {"Physics" => "physics", "Biology" => "biology", "Chemistry" => "chemistry"}, {:prompt => @labware.code.to_s}, {class: "form-control"} %>
   <%= f.primary "OK" %>
 <% end %>
