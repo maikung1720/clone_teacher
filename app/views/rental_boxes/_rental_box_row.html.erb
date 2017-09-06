@@ -4,7 +4,7 @@
   <p>
     <%= form_for rental_detail, remote: true do |f| %>
     <div class="input-group">
-      <%= f.number_field :quantity, value: rental_detail.quantity.to_i, class: "form-control", min: 1,:disabled => @can_update %>
+      <%= f.number_field :quantity, value: rental_detail.quantity.to_i, class: "form-control", min: 1,:disabled => @can_update, max: labware.quantity - labware.circulation %>
       <%= f.hidden_field :labware_id, value: labware.id%>
       <div class="input-group-btn">
         <%= f.submit "Update Quantity", class: "btn btn-primary" %>

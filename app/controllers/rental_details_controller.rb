@@ -1,4 +1,5 @@
 class RentalDetailsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @rental = current_rental
     @rental_detail = @rental.rental_details.new(rental_detail_params)

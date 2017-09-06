@@ -5,7 +5,7 @@
   <p>
     <%= form_for rental_detail, remote: true do |f| %>
     <div class="input-group">
-      <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+      <%= f.number_field :quantity, value: 1, class: "form-control", min: 1, max: labware.quantity - labware.circulation %>
       <div class="input-group-btn">
         <%= f.hidden_field :labware_id, value: labware.id %>
         <%= f.submit "Add to Cart", class: "btn btn-primary" %>
@@ -15,6 +15,7 @@
   </p>
   <% elsif can? :upgrate , Labware%>
     <%= link_to 'Edit', edit_labware_path(labware.id), class: "btn btn-success" %>
+    <%= link_to 'Delete', labware, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
   <% end %>
   </div>
 </div>

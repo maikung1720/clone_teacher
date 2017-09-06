@@ -1,5 +1,6 @@
 class RentalsController < ApplicationController
   # load_and_authorize_resource
+  before_action :authenticate_user!
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -40,6 +41,17 @@ class RentalsController < ApplicationController
       @rental.status = "application"
     end
     if @rental.update(rental_params)
+      if can? :change_status, Rental then
+        if @rental.status.eql?("approval") then
+          @rental.rental_details.each do |i|
+            labwares = Labware.where("name = ?",i.labware.name)
+            labwares.each do |labware|
+              labware.circulation += i.quantity
+              labware.update(labware_params)
+            end
+          end
+        end
+      end
       redirect_to rentals_path
       session[:rental_id] = nil
     else
@@ -55,6 +67,10 @@ class RentalsController < ApplicationController
 private
     def rental_params
       params[:rental].permit(:rental_date, :due_date, :User_id, :status,rental_details_attributes: [:id, :quantity, :rental_id, :labware_id, :_destroy, labwares_attributes:[:name]])
+    end
+    
+    def labware_params
+      params.permit(:circulation)
     end
 
     def set_rental
