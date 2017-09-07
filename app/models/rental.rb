@@ -9,6 +9,7 @@
 #  status      :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  rack_no     :integer
 #
 
 class Rental < ActiveRecord::Base
@@ -21,6 +22,7 @@ class Rental < ActiveRecord::Base
   accepts_nested_attributes_for :rental_details, allow_destroy: true
   
   enum status: {application: 'application', approval: 'approval', reject: 'reject', lending: 'lending', returned: 'returned', progress: 'progress'}
+  enum rack_no: {Rack1: 1, Rack2: 2, Rack3: 3}
   
 private
   def set_rental_status

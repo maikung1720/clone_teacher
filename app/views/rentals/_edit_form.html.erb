@@ -2,11 +2,16 @@
   <%= f.date_select :rental_date, :disabled => @can_update %>
   <%= f.date_select :due_date, :disabled => @can_update %>
   <% if can? :change_status, Rental %>
-    <% if @rental.status == "application" || @rental.status == "approval" || @rental.status == "reject"  %>
+    <% if @rental.status == "application" %>
       <%= f.select :status, {"Application" => "application", "Approval" => "approval", "Reject" => "reject"}, {}, {class: "form-control"} %>
+    <% elsif @rental.status == "approval" %>
+      <%= f.select :status, {"Approval" => "approval", "Reject" => "reject"}, {}, {class: "form-control"} %>
+    <% elsif @rental.status == "reject"  %>
+      <%= f.select :status, {"Approval" => "approval","Reject" => "reject"}, {}, {class: "form-control"} %>
     <% else %>
       <%= f.select :status, {}, {}, {disabled: true, class: "form-control"} %>
     <% end %>
+    <%= f.select :rack_no, Rental.rack_nos.keys, {}, {class: "form-control"} %>
   <% end %>
   <b>Labware_detail</b>
   <div class="container">

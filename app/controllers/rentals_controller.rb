@@ -30,6 +30,7 @@ class RentalsController < ApplicationController
     if @rental.blank?
       @rental = current_rental
     end
+    @@status = @rental.status
     @can_update = islabaware_detail_change(@rental)
     @rental_details = @rental.rental_details
     logger.debug @rental
@@ -40,13 +41,22 @@ class RentalsController < ApplicationController
       @rental.User = current_user
       @rental.status = "application"
     end
+    logger.debug @@status + " HHH"
     if @rental.update(rental_params)
       if can? :change_status, Rental then
-        if @rental.status.eql?("approval") then
+        if @rental.status.eql?("approval") and (@@status.eql?("application") or @@status.eql?("reject")) then
           @rental.rental_details.each do |i|
             labwares = Labware.where("name = ?",i.labware.name)
             labwares.each do |labware|
               labware.circulation += i.quantity
+              labware.update(labware_params)
+            end
+          end
+        elsif @rental.status.eql?("reject") and @@status.eql?("approval") then
+          @rental.rental_details.each do |i|
+            labwares = Labware.where("name = ?",i.labware.name)
+            labwares.each do |labware|
+              labware.circulation -= i.quantity
               labware.update(labware_params)
             end
           end
@@ -66,7 +76,7 @@ class RentalsController < ApplicationController
 
 private
     def rental_params
-      params[:rental].permit(:rental_date, :due_date, :User_id, :status,rental_details_attributes: [:id, :quantity, :rental_id, :labware_id, :_destroy, labwares_attributes:[:name]])
+      params[:rental].permit(:rental_date, :due_date, :User_id, :status, :rack_no,rental_details_attributes: [:id, :quantity, :rental_id, :labware_id, :_destroy, labwares_attributes:[:name]])
     end
     
     def labware_params

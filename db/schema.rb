@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906072958) do
+ActiveRecord::Schema.define(version: 20170907021218) do
 
   create_table "labwares", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170906072958) do
     t.string   "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "rack_no"
   end
 
   add_index "rentals", ["User_id"], name: "index_rentals_on_User_id"

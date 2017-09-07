@@ -10,7 +10,7 @@ class Api::BoxOpenerController < ApplicationController
               @rentals = Rental.where("status = ? or status = ?", "approval","lending").where("User_id= ? and rental_date <= ? and due_date >= ? ", user.id, Time.parse("00:00"), Time.parse("00:00"))
               logger.debug Time.parse("00:00")
               @rentals.each do |rental|
-                  str = JSON.generate({ "status" => rental.status , "card_no" => box_opener_params[:card_no], "id" => rental.id })
+                  str = JSON.generate({ "status" => rental.status , "card_no" => box_opener_params[:card_no], "rack_no" => rental.rack_no })
                   if rental.status.eql?("approval") then
                     rental.status = "lending"
                   else
