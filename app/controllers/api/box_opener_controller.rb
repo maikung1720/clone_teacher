@@ -2,6 +2,7 @@ require 'json'
 
 class Api::BoxOpenerController < ApplicationController
   def index
+      logger.debug "Come!!!!!!!!!!!!!!!!!"
       @users = User.where("card_no = ?", box_opener_params[:card_no])
       @users.each do |user|
           if user.role.eql?("teacher") then

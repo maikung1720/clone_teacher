@@ -16,7 +16,7 @@
 class Labware < ActiveRecord::Base
     validates :description, :name, :quantity, :circulation, :code, presence: true
     
-    mount_uploader :image, ImageUploader
+#    mount_uploader :image, ImageUploader
     
     enum code: {Physics: 'physics', Biology: 'biology', Chemistry: 'chemistry'}
     

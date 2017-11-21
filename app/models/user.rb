@@ -29,8 +29,6 @@ class User < ActiveRecord::Base
          
   enum role: {admin: 'admin', teacher: 'teacher', student: 'student'}
   
-  mount_uploader :image, ImageUploader
-  
   has_many :rentals
     
 end
