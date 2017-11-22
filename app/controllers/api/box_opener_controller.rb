@@ -6,12 +6,12 @@ class Api::BoxOpenerController < ApplicationController
       @users = User.where("card_no = ?", box_opener_params[:card_no])
       @users.each do |user|
           if user.role.eql?("teacher") then
-               str = JSON.generate({ "status" => "approval" , "rack_no" => "all" })
+               str = JSON.generate({ "rack_no" => "all" })
           else
               @rentals = Rental.where("status = ? or status = ?", "approval","lending")
               @rentals.each do |rental|
                     if rental.User_id.eql?(user.id) then
-                        str = JSON.generate({ "status" => rental.status , "card_no" => box_opener_params[:card_no], "rack_no" => rental.rack_no })
+                        str = JSON.generate({ "rack_no" => rental.rack_no })
                         if rental.status.eql?("approval") then
                             rental.status = "lending"
                         else
