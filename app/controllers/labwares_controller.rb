@@ -63,7 +63,7 @@ class LabwaresController < ApplicationController
   private
 
     def labware_params
-      params[:labware].permit(:name, :description, :quantity, :code)
+      params[:labware].permit(:name, :description, :quantity, :code, :image)
     end
 
     def set_labware

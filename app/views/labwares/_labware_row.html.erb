@@ -1,9 +1,20 @@
 <div class="col-md-4">
   <div class="well">
   <h2><%= link_to labware.name, labware_path(labware.id) %></h2>
-  <% if can? :create, Rental %>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+  <div class="text-center">
+  <%= image_tag(labware.image.url, alt: 'Image', size: '200x200') if labware.image? %>
+  </div>
+  </div>
+  <div class="col-md-1">
+  </div> 
+  <% if can? :create, Rental %> 
+
   <p>
     <%= form_for rental_detail, remote: true do |f| %>
+    
     <div class="input-group">
       <%= f.number_field :quantity, value: 1, class: "form-control", min: 1, max: labware.quantity - labware.circulation %>
       <div class="input-group-btn">
