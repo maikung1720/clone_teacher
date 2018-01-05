@@ -19,6 +19,9 @@
 #  name                   :string
 #  image                  :text
 #  card_no                :string
+#  number                 :integer
+#  class_rooom            :integer
+#  studeniid              :integer
 #
 
 class User < ActiveRecord::Base

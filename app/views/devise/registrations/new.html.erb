@@ -22,11 +22,27 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
       <div class="form-group">
+        <%= f.label :Telephone %>
+        <%= f.text_field :telephon, autofocus: true, class: "form-control" %>
+      </div
+      <div class="form-group">
         <label><%= f.radio_button :role, "teacher", checked: true, id:"teacher", onclick: "entryChange1();" %> teacher &emsp;</label>
         <label><%= f.radio_button :role, "student", onclick: "entryChange1();" %> student &emsp;</label>
-        <label><%= f.radio_button :role, "Administrator",onclick: "entryChange1();" %> admin </label>
+        <label><%= f.radio_button :role, "admin",onclick: "entryChange1();" %> admin </label>
       </div>
       <div id="studentBox">
+        <div class="form-group">
+        <%= f.label :number %>
+        <%= f.number_field :number, autofocus: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+        <%= f.label :class %>
+        <%= f.number_field :class_rooom, autofocus: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+        <%= f.label :studentid %>
+        <%= f.number_field :studeniid , autofocus: true, class: 'form-control' %>
+        </div>
         <div class="form-group">
           <%= f.label :card_no %>
           <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>
@@ -38,24 +54,30 @@
           <!--<%= f.text_field :name, autofocus: true, class: "form-control" %>-->
         </div>
       </div>
-      <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
+       <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
 <%= render 'devise/shared/links' %>
+
 <script type="text/javascript">
 	function entryChange1(){
 		radio = document.getElementsByName("user[role]") 
 		if(radio[0].checked) {
 			document.getElementById('studentBox').style.display = "none";
 			document.getElementById('teacherBox').style.display = "";
+			document.getElementById('adminBox').style.display = "";
 		} else if(radio[1].checked) {
 			document.getElementById('studentBox').style.display = "";
 			document.getElementById('teacherBox').style.display = "none";
+			document.getElementById('adminBox').style.display = "";
 		} else if(radio[2].checked) {
-		  document.getElementById('studentBox').style.display = "";
+		  document.getElementById('studentBox').style.display = "none";
 			document.getElementById('teacherBox').style.display = "";
+			document.getElementById('adminBox').style.display = "";
 		}
 	}
 	window.onload = entryChange1;
 </script>
+
+

@@ -51,6 +51,18 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="navbar-list-menu" class="nav navbar-nav navbar-right">
             <%= sidebar_list_items() %>
+    
+    <li data-toggle="collapse" href="#collapse-D">
+              <a href="#"><span class="caret"></span> Rental Details</a>
+              </li>
+    <ul id="collapse-D" class="collapse" style="list-style-type:none;">
+                <li><%= link_to 'Application', rentals_path(rental_status: "application") %>
+                <li><%= link_to 'Approval', rentals_path(rental_status: "approval") %>
+                <li><%= link_to 'Reject', rentals_path(rental_status: "reject") %>
+                <li><%= link_to 'Lending',  rentals_path(rental_status: "lending") %>
+                <li><%= link_to 'Returned',  rentals_path(rental_status: "returned") %>
+               </ul>
+
             <li data-toggle="collapse" href="#collapse-A">
               <a href="#"><span class="caret"></span> Labware</a>
               </li>
@@ -59,6 +71,8 @@
                 <li><%= link_to 'Biology', labwares_path(labware_group: "biology") %></li>
                 <li><%= link_to 'Chemistry', labwares_path(labware_group: "chemistry") %></li>
               </ul>
+              
+              
           </ul>
           <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
@@ -82,6 +96,17 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <%= sidebar_list_items() %>
+            <li data-toggle="collapse" href="#collapse-C">
+              <a href="#"><span class="caret"></span> Rental Details</a>
+              </li>
+<ul id="collapse-C" class="collapse" style="list-style-type:none;">
+                <li><%= link_to 'Application', rentals_path(rental_status: "application") %>
+                <li><%= link_to 'Approval', rentals_path(rental_status: "approval") %>
+                <li><%= link_to 'Reject', rentals_path(rental_status: "reject") %>
+                <li><%= link_to 'Lending',  rentals_path(rental_status: "lending") %>
+                <li><%= link_to 'Returned',  rentals_path(rental_status: "returned") %>
+               </ul>
+
             <li data-toggle="collapse" href="#collapse-B">
               <a href="#"><span class="caret"></span> Labware</a>
               </li>
@@ -90,6 +115,8 @@
                 <li><%= link_to 'Biology', labwares_path(labware_group: "biology") %>
                 <li><%= link_to 'Chemistry', labwares_path(labware_group: "chemistry") %>
               </ul>
+       
+              
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

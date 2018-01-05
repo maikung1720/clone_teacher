@@ -43,6 +43,8 @@ class RentalsController < ApplicationController
     end
     logger.debug @@status + " HHH"
     if @rental.update(rental_params)
+     @rental.due_date =  @rental.rental_date+7.days
+     @rental.save
       if can? :change_status, Rental then
         if @rental.status.eql?("approval") and (@@status.eql?("application") or @@status.eql?("reject")) then
           @rental.rental_details.each do |i|
@@ -52,7 +54,7 @@ class RentalsController < ApplicationController
               labware.update(labware_params)
             end
           end
-        elsif @rental.status.eql?("reject") and @@status.eql?("approval") then
+       elsif @rental.status.eql?("reject") and @@status.eql?("approval") then
           @rental.rental_details.each do |i|
             labwares = Labware.where("name = ?",i.labware.name)
             labwares.each do |labware|
