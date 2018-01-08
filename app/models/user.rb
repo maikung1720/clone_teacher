@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
+  mount_uploader :image, ImageUploader
+         
   enum role: {admin: 'admin', teacher: 'teacher', student: 'student'}
   
   has_many :rentals

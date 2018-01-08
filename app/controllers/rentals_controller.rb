@@ -4,7 +4,11 @@ class RentalsController < ApplicationController
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
 
   def index
-    @rentals = Rental.where.not(:status => 'progress')
+    if params[:rental_status].blank?
+        @rentals = Rental.where.not(:status => 'progress')
+    else
+        @rentals = Rental.where(:status => params[:rental_status])
+    end
   end
 
   def show

@@ -4,6 +4,10 @@
   <tbody>
     <% if !@rental.User.nil? %>
     <tr>
+    <td width="100", class="info">Pictures</td> 
+    <td><%= image_tag(@rental.User.image.url, alt: 'Image', size: '200x200') if @rental.User.image? %></td>
+    </tr>
+    <tr>
     <td width="100", class="info">Name</td> <td><%= @rental.User.name %></td>
     </tr>
     <tr>
@@ -16,10 +20,10 @@
     <td width="100", class="info">Student ID</td> <td><%= @rental.User.studeniid %></td>
     </tr>
     <tr>
-    <td width="100", class="info">Description</td> <td><%= @rental.rental_date %></td>
+    <td width="100", class="info">Rental date</td> <td><%= @rental.rental_date.in_time_zone('Bangkok').to_s(:date_on) %></td>
     </tr>
     <tr>
-    <td width="100", class="info">Quantity</td> <td><%= @rental.due_date %></td>
+    <td width="100", class="info">Rental due</td> <td><%= @rental.due_date.in_time_zone('Bangkok').to_s(:date_on) %></td>
     </tr>
     <% end %>
     <tr>
@@ -38,6 +42,7 @@
               <td><%= i.labware.name %></td>
               <td><%= i.quantity %></td>
             </tr>
+            
             <% end %>
           </tbody>
         </table>
@@ -48,6 +53,9 @@
     <td>
       <%= render 'status_view', data: @rental.status %>
     </td>
+    </tr>
+     <tr>
+    <td width="100", class="info">Rack no</td> <td><%= @rental.rack_no %></td>
     </tr>
   </tbody>
 </table>
