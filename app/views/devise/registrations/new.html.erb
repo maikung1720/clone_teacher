@@ -70,15 +70,12 @@
 		if(radio[0].checked) {
 			document.getElementById('studentBox').style.display = "none";
 			document.getElementById('teacherBox').style.display = "";
-			document.getElementById('adminBox').style.display = "";
 		} else if(radio[1].checked) {
 			document.getElementById('studentBox').style.display = "";
 			document.getElementById('teacherBox').style.display = "none";
-			document.getElementById('adminBox').style.display = "";
 		} else if(radio[2].checked) {
 		  document.getElementById('studentBox').style.display = "none";
-			document.getElementById('teacherBox').style.display = "";
-			document.getElementById('adminBox').style.display = "";
+			document.getElementById('teacherBox').style.display = "none";
 		}
 	}
 	window.onload = entryChange1;
