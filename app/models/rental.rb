@@ -21,7 +21,7 @@ class Rental < ActiveRecord::Base
   
   accepts_nested_attributes_for :rental_details, allow_destroy: true
   
-  enum status: {application: 'application', approval: 'approval', reject: 'reject', lending: '', returned: 'returned', progress: 'progress'}
+  enum status: {application: 'application', approval: 'approval', reject: 'reject', lending: 'lending', returned: 'returned', progress: 'progress'}
   enum rack_no: {Rack1: 1, Rack2: 2, Rack3: 3}
   
 private
