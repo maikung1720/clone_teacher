@@ -57,6 +57,8 @@ gem 'cancancan'
 gem 'devise-bootstrap-views'
 gem 'bootstrap_form', '~> 2.3'
 
+gem 'rails_12factor', group: :production
+
 # before install
 # sudo apt-get update
 # sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
