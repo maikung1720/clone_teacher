@@ -18,6 +18,10 @@
         <%= f.email_field :email, autofocus: true, class: 'form-control' %>
       </div>
       <div class="form-group">
+          <%= f.label :card_no %>
+          <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>
+      </div>
+      <div class="form-group">
         <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', default: "leave blank if you don't want to change it") %>)</i>
         <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
       </div>
@@ -30,8 +34,8 @@
         <%= f.password_field :current_password, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <label><%= f.radio_button :role, "teacher", checked: true, id:"teacher", onclick: "entryChange1();" %> teacher &emsp;</label>
-        <label><%= f.radio_button :role, "student", onclick: "entryChange1();" %> student &emsp;</label>
+        <label><%= f.radio_button :role, "teacher", onclick: "entryChange1();" %> teacher &emsp;</label>
+        <label><%= f.radio_button :role, "student", checked: true, id:"student", onclick: "entryChange1();" %> student &emsp;</label>
         <label><%= f.radio_button :role, "admin",onclick: "entryChange1();" %> admin </label>
       </div>
        <div id="studentBox">
@@ -46,10 +50,6 @@
         <div class="form-group">
         <%= f.label :studentid %>
         <%= f.number_field :studeniid , autofocus: true, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :card_no %>
-          <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>
         </div>
       </div>
       <div id="teacherBox">
