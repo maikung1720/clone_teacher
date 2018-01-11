@@ -9,7 +9,7 @@ class Api::BoxOpenerController < ApplicationController
                str = JSON.generate({ "status" => "approval" , "rack_no" => "all" })
           else
             #   @rentals = Rental.where("status = ? or status = ?", "approval","lending").where("User_id= ? and rental_date <= ? and due_date >= ? ", user.id, Time.parse("00:00"), Time.parse("00:00"))
-              @rentals = Rental.where("status = ? or status = ?", "approval","lending").where("User_id= ?", user.id)
+              @rentals = Rental.where("status = ? or status = ?", "approval","lending")
               logger.debug Time.parse("00:00")
               logger.debug "1"
               @rentals.each do |rental|
