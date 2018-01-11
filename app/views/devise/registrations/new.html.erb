@@ -28,7 +28,11 @@
       <div class="form-group">
         <%= f.label :Telephone %>
         <%= f.text_field :telephon, autofocus: true, class: "form-control" %>
-      </div
+      </div>
+       <div class="form-group">
+          <%= f.label :card_no %>
+          <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>
+        </div>
       <div class="form-group">
         <label><%= f.radio_button :role, "teacher", checked: true, id:"teacher", onclick: "entryChange1();" %> teacher &emsp;</label>
         <label><%= f.radio_button :role, "student", onclick: "entryChange1();" %> student &emsp;</label>
@@ -40,27 +44,24 @@
         <%= f.number_field :number, autofocus: true, class: 'form-control' %>
         </div>
         <div class="form-group">
-        <%= f.label :class %>
+        <%= f.label :class %><i>(<%= t('.etc._401_501', default: "etc. 401 501") %>)</i>
         <%= f.number_field :class_rooom, autofocus: true, class: 'form-control' %>
         </div>
         <div class="form-group">
         <%= f.label :studentid %>
         <%= f.number_field :studeniid , autofocus: true, class: 'form-control' %>
         </div>
-        <div class="form-group">
-          <%= f.label :card_no %>
-          <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>
-        </div>
-      </div>
+     </div>
       <div id="teacherBox">
         <div class="form-group">
           <!--<%= f.label :name %>-->
           <!--<%= f.text_field :name, autofocus: true, class: "form-control" %>-->
         </div>
       </div>
+       
        <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
     <% end %>
-  </div>
+      </div>
 </div>
 <%= render 'devise/shared/links' %>
 
