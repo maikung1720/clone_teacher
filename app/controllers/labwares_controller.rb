@@ -41,6 +41,7 @@ class LabwaresController < ApplicationController
   end
 
   def edit
+    logger.debug  @labware.code.to_s + "AAAA"
   end
 
   def update
