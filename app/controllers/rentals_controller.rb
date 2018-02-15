@@ -5,9 +5,9 @@ class RentalsController < ApplicationController
 
   def index
     if params[:rental_status].blank?
-        @rentals = Rental.where.not(:status => 'progress')
+        @rentals = Rental.where.not(:status => 'progress').order("id DESC")
     else
-        @rentals = Rental.where(:status => params[:rental_status])
+        @rentals = Rental.where(:status => params[:rental_status]).order("id DESC")
     end
   end
 
