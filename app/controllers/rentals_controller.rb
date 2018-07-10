@@ -4,6 +4,8 @@ class RentalsController < ApplicationController
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
 
   def index
+    @q = Rental.ransack(params[:q])
+    @rentals = @q.result
     @rentals = Rental.where.not(:status => 'progress')
   end
 
