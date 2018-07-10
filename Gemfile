@@ -57,6 +57,8 @@ gem 'cancancan'
 gem 'devise-bootstrap-views'
 gem 'bootstrap_form', '~> 2.3'
 
+gem 'rails_12factor', group: :production
+
 # before install
 # sudo apt-get update
 # sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
@@ -65,8 +67,11 @@ gem 'bootstrap_form', '~> 2.3'
 #gem 'rmagick', require: 'RMagick'
 
 gem 'cocoon'
+
+gem 'ransack'
 # <== add
 
+gem 'carrierwave', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -78,8 +83,12 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+<<<<<<< HEAD
   gem 'spring'
   gem 'ransack' 
+=======
+  gem 'spring'  
+>>>>>>> refs/heads/master
 end
 
 #group :production do

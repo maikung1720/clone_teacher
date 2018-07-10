@@ -4,9 +4,17 @@ class RentalsController < ApplicationController
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
 
   def index
+<<<<<<< HEAD
     @q = Rental.ransack(params[:q])
     @rentals = @q.result
     @rentals = Rental.where.not(:status => 'progress')
+=======
+    if params[:rental_status].blank?
+        @rentals = Rental.where.not(:status => 'progress').order("id DESC")
+    else
+        @rentals = Rental.where(:status => params[:rental_status]).order("id DESC")
+    end
+>>>>>>> refs/heads/master
   end
 
   def show

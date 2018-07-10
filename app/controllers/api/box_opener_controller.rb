@@ -6,15 +6,31 @@ class Api::BoxOpenerController < ApplicationController
       @users = User.where("card_no = ?", box_opener_params[:card_no])
       @users.each do |user|
           if user.role.eql?("teacher") then
+<<<<<<< HEAD
                str = JSON.generate({ "rack_no" => "all" })
+=======
+               str = JSON.generate({"rack_no" => "all" })
+>>>>>>> refs/heads/master
           else
               @rentals = Rental.where("status = ? or status = ?", "approval","lending")
+<<<<<<< HEAD
+=======
+              logger.debug Time.parse("00:00")
+              logger.debug "1"
+>>>>>>> refs/heads/master
               @rentals.each do |rental|
+                  logger.debug "2"
                     if rental.User_id.eql?(user.id) then
+<<<<<<< HEAD
+=======
+                        logger.debug "3"
+>>>>>>> refs/heads/master
                         str = JSON.generate({ "rack_no" => rental.rack_no })
                         if rental.status.eql?("approval") then
+                            logger.debug "4"
                             rental.status = "lending"
                         else
+                            logger.debug "5"
                             rental.rental_details.each do |i|
                             labwares = Labware.where("name = ?",i.labware.name)
                                 labwares.each do |labware|
@@ -22,12 +38,15 @@ class Api::BoxOpenerController < ApplicationController
                                     labware.update(labware_params)
                                 end
                             end
+                            logger.debug "6"
                             rental.status = "returned"
                         end
+                        logger.debug "7"
                         rental.update(rental_params)
                     end
               end
           end
+          logger.debug "8"
           render :json => str and return
        end
   end
