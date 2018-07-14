@@ -1,12 +1,7 @@
 <%= bootstrap_form_for(@rental) do |f| %>
   <%= f.date_select :rental_date, :disabled => @can_update %>
-<<<<<<< HEAD
 <%= f.date_select :due_date, :disabled => @can_update %>
    <% if can? :change_status, Rental %>
-=======
-
-  <% if can? :change_status, Rental %>
->>>>>>> refs/heads/master
     <% if @rental.status == "application" %>
       <%= f.select :status, {"Application" => "application", "Approval" => "approval", "Reject" => "reject"}, {}, {class: "form-control"} %>
     <% elsif @rental.status == "approval" %>

@@ -4,23 +4,14 @@ class LabwaresController < ApplicationController
   before_action :authenticate_user!
   before_action :set_labware, only: [:show, :edit, :update, :destroy]
 
-  @@labware_group = ""
-
   def index
     if params[:labware_group].blank?
-      if params[:back]
-        @labware_group = @@labware_group
-      else
-        @labware_group = "physics"
-      end
+      @labware_group = "physics"
     else 
       @labware_group = params[:labware_group]
     end
-    @@labware_group = @labware_group
-    @q =Labware.where(:code => @labware_group).search(params[:q])
-    @labwares = @q.result()
+    @labwares = Labware.where(:code => @labware_group)
     @rental_detail = current_rental.rental_details.new
- 
   end
 
   def show
@@ -41,7 +32,6 @@ class LabwaresController < ApplicationController
   end
 
   def edit
-    logger.debug  @labware.code.to_s + "AAAA"
   end
 
   def update
@@ -64,7 +54,7 @@ class LabwaresController < ApplicationController
   private
 
     def labware_params
-      params[:labware].permit(:name, :description, :quantity, :code, :image)
+      params[:labware].permit(:name, :description, :quantity, :code)
     end
 
     def set_labware

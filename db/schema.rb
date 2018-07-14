@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20171124150157) do
-=======
-ActiveRecord::Schema.define(version: 20180105072445) do
->>>>>>> refs/heads/master
 
   create_table "labwares", force: :cascade do |t|
     t.string   "name"
@@ -71,10 +67,6 @@ ActiveRecord::Schema.define(version: 20180105072445) do
     t.string   "name"
     t.text     "image"
     t.string   "card_no"
-    t.integer  "number"
-    t.integer  "class_rooom"
-    t.integer  "studeniid"
-    t.string   "telephon"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

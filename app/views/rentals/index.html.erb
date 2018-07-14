@@ -23,11 +23,9 @@
         <%= link_to 'Change Status', edit_rental_path(r.id), class: "btn btn-success" %>
         <% end %>
         <% if can? :destroy, Rental %>
-       <% if r.User.name == current_user.name %>      
-       <%= link_to 'Destroy', rental_path(r.id), method: :delete, data: { confirm: "Are you sure to delete？" }, :class => "btn btn-danger" %>
+        <%= link_to 'Destroy', rental_path(r.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }, :class => "btn btn-danger" %>
         <% end %>
-        <% end %>
-           </div>
+      </div>
     </td>
     </tr>
     <% end %>
