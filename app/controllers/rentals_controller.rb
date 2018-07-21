@@ -10,6 +10,11 @@ class RentalsController < ApplicationController
     logger.error "logger.debug 1"
     @rentals = Rental.where.not(:status => 'progress')
     logger.error "logger.debug 2"
+    if params[:rental_status].blank?		
+      @rentals = Rental.where.not(:status => 'progress').order("id DESC")		
+    else
+      @rentals = Rental.where(:status => params[:rental_status]).order("id DESC")		
+    end
   end
 
   def show

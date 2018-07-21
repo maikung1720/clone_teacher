@@ -3,6 +3,15 @@
 <%= link_to "Add", new_labware_path, :class => "btn btn-primary" %><br>
 <% end %>
 <hr>
+<div>		
+<div class="text-center">		
+ <%= search_form_for @q do |f| %>		
+    <%= f.text_field :name_cont %>		
+    <%= f.hidden_field :labware_group, value: @labware_group %>		
+    <%= f.submit "Search", name: 'back', :class => "btn btn-primary" %>		
+<% end %>		
+</div>		
+</div>
 <% if @labwares.any? %>
   <div class="container">
   <!-- Example row of columns -->

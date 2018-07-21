@@ -19,6 +19,10 @@
 #  name                   :string
 #  image                  :text
 #  card_no                :string
+#  number                 :integer
+#  class_rooom            :integer
+#  studentid              :integer
+#  telephon               :string
 #
 
 require 'test_helper'

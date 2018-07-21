@@ -1,6 +1,7 @@
 # == Route Map
 #
 #                   Prefix Verb   URI Pattern                    Controller#Action
+#            product_index GET    /product/index(.:format)       product#index
 #               rental_box GET    /rental_box(.:format)          rental_boxes#show
 #                     root GET    /                              menu#index
 #         new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
@@ -42,6 +43,8 @@
 # 
 
 Rails.application.routes.draw do
+
+  get 'product/index'
 
   resource :rental_box, only: [:show]
 

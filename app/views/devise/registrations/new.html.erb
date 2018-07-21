@@ -22,14 +22,30 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <label><%= f.radio_button :role, "teacher", checked: true, id:"teacher", onclick: "entryChange1();" %> teacher &emsp;</label>
-        <label><%= f.radio_button :role, "student", onclick: "entryChange1();" %> student &emsp;</label>
-        <label><%= f.radio_button :role, "Administrator",onclick: "entryChange1();" %> admin </label>
+      <%= f.label :Telephone %>
+      <%= f.text_field :telephon, autofocus: true, class: "form-control" %>
+    </div>
+    <div class="form-group">		
+        <%= f.label :card_no %>		
+        <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>		
+    </div>		
+    <div class="form-group">		
+      <label><%= f.radio_button :role, "teacher", onclick: "entryChange1();" %> teacher &emsp;</label>		
+      <label><%= f.radio_button :role, "student", checked: true, id:"student", onclick: "entryChange1();" %> student &emsp;</label>		
+      <label><%= f.radio_button :role, "admin",onclick: "entryChange1();" %> admin </label>
       </div>
       <div id="studentBox">
         <div class="form-group">
-          <%= f.label :card_no %>
-          <%= f.text_field :card_no, autofocus: true, class: 'form-control' %>
+          <%= f.label :number %>
+      <%= f.number_field :number, autofocus: true, class: 'form-control' %>
+      </div>		
+      <div class="form-group">		
+      <%= f.label :class %><i>(<%= t('.etc._401_501', default: "etc. 401 501") %>)</i>		
+      <%= f.number_field :class_rooom, autofocus: true, class: 'form-control' %>		
+      </div>		
+      <div class="form-group">		
+      <%= f.label :studentid %>		
+      <%= f.number_field :studentid , autofocus: true, class: 'form-control' %>
         </div>
       </div>
       <div id="teacherBox">
@@ -53,8 +69,8 @@
 			document.getElementById('studentBox').style.display = "";
 			document.getElementById('teacherBox').style.display = "none";
 		} else if(radio[2].checked) {
-		  document.getElementById('studentBox').style.display = "";
-			document.getElementById('teacherBox').style.display = "";
+		  document.getElementById('studentBox').style.display = "none";
+			document.getElementById('teacherBox').style.display = "none";
 		}
 	}
 	window.onload = entryChange1;

@@ -19,6 +19,10 @@
 #  name                   :string
 #  image                  :text
 #  card_no                :string
+#  number                 :integer
+#  class_rooom            :integer
+#  studentid              :integer
+#  telephon               :string
 #
 
 class User < ActiveRecord::Base
@@ -26,6 +30,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  # mount_uploader :image, ImageUploader
          
   enum role: {admin: 'admin', teacher: 'teacher', student: 'student'}
   

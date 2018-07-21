@@ -1,7 +1,10 @@
 <%= bootstrap_form_for(@labware) do |f| %>
+  <div>		
+    <%= f.file_field :image %>
+  </div>
   <%= f.text_field :name %>
   <%= f.text_area :description %>
   <%= f.number_field :quantity, value: @labware.quantity.to_i, class: "form-control", min: 1 %>
-  <%= f.select :code, {"Physics" => "physics", "Biology" => "biology", "Chemistry" => "chemistry"}, {:prompt => @labware.code.to_s}, {class: "form-control"} %>
+  <%= f.select :code, {"Physics" => "physics", "Biology" => "biology", "Chemistry" => "chemistry"}, {:selected => @labware.code.to_s.downcase }, {class: "form-control"} %>
   <%= f.primary "OK" %>
 <% end %>
