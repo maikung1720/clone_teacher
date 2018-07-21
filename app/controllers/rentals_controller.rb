@@ -6,9 +6,9 @@ class RentalsController < ApplicationController
   def index
     @q = Rental.ransack(params[:q])
     @rentals = @q.result
-    logger.debug "logger.debug 1"
+    logger.error "logger.debug 1"
     @rentals = Rental.where.not(:status => 'progress')
-    logger.debug "logger.debug 2"
+    logger.error "logger.debug 2"
   end
 
   def show

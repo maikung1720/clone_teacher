@@ -1,7 +1,7 @@
 <h1>Rental list</h1>
-<% logger.debug "logger.debug 4"  %>
+<% logger.error "logger.debug 4"  %>
 <% if @rentals.any? %>
-<% logger.debug "logger.debug 5"  %>
+<% logger.error "logger.debug 5"  %>
 <table class="table table-bordered table-hover">
   <thead>
      <tr class="info"><th>#</th><th>User</th><th>Rental date</th><th>Due date</th><th>Return pog</th><th>Operation</th></tr>
@@ -34,6 +34,6 @@
   </tbody>
 </table>
 <% else %>
-  <% logger.debug "logger.debug 5"  %>
+  <% logger.error "logger.debug 5"  %>
   <h4>No data yet.</h4>
 <% end %>
