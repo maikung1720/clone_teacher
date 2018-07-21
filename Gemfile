@@ -6,7 +6,7 @@ gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', groups: %w(test development), require: false
 
-gem 'pg', groups: %w(production), require: false
+gem 'pg', '0.20.0', groups: %w(production), require: false
 
 gem 'sprockets', '~>3.7.2'
 
