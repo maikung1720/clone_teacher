@@ -4,6 +4,7 @@ class RentalsController < ApplicationController
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
 
   def index
+    logger.error "logger.debug 0"
     @q = Rental.ransack(params[:q])
     @rentals = @q.result
     logger.error "logger.debug 1"
