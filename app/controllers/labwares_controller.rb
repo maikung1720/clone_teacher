@@ -8,7 +8,7 @@ class LabwaresController < ApplicationController
 
   def index
     if params[:labware_group].blank?
-      if params[:back]		 +      @labware_group = "physics"
+      if params[:back]
          @labware_group = @@labware_group		
       else		
          @labware_group = "physics"		
